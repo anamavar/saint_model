@@ -1,0 +1,53 @@
+network:
+  transformer:
+    depth: 5
+    heads: 1
+    dropout: 0.0
+    attention_type: col
+    dim_head: 64
+    scale_dim_internal_col: 4.0
+    scale_dim_internal_row: 4.0
+  num_workers: 0
+  embedding_size: 10
+  internal_dimension_embed_continuous: 100
+  dropout_embed_continuous: 0.0
+pretrain:
+  batch_size: 256
+  aug:
+    cutmix:
+      lam: 0.1
+    mixup:
+      lam: 0.1
+  task:
+    contrastive:
+      contrastive_type: standard
+      projhead_style: different
+      nce_temp: 0.5
+      weight: 0.1
+      dropout: 0.0
+    denoising:
+      denoising_type: standard
+      weight_cross_entropy: 0.5
+      weight_mse: 0.5
+      scale_dim_internal_sepmlp: 5.0
+      dropout: 0.0
+  optimizer:
+    learning_rate: 0.0001
+    other_params: {}
+  epochs: 2
+train:
+  batch_size: 256
+  internal_dimension_output_layer: 20
+  mlpfory_dropout: 0.0
+  epochs: 10
+  optimizer:
+    learning_rate: 0.0001
+    other_params: {}
+project:
+  data_address: data/adult.csv
+  target_column: 14 
+  test_size: 0.2 
+  validation_size: 0.1 
+  mode: train
+  save_dir: output
+  model: classification
