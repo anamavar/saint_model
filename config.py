@@ -129,6 +129,8 @@ class ProjectConfig:
     mode: str = "train"
     save_dir: str = "/output"
     model: str = "classification"
+    censored_column= ""
+    saved_model = ""
 
 @dataclass
 class SaintConfig:
