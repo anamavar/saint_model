@@ -34,20 +34,30 @@ pretrain:
   optimizer:
     learning_rate: 0.0001
     other_params: {}
-  epochs: 2
+  epochs: 10
 train:
   batch_size: 256
   internal_dimension_output_layer: 20
   mlpfory_dropout: 0.0
-  epochs: 10
+  epochs: 20
   optimizer:
     learning_rate: 0.0001
     other_params: {}
 project:
-  data_address: data/adult.csv
-  target_column: 14 
-  test_size: 0.2 
-  validation_size: 0.1 
-  mode: train
-  save_dir: output
-  model: classification
+  # data_address: data/adult_test_1.csv
+  # data_address: home_test.csv
+  # data_address: censored.csv
+  # target_column: duration
+  # target_column: 14
+  # target_column: MedHouseVal
+  data_address: humania_orig.csv #address of the train/test data
+  target_column: time #Label for training. Could be anything in testing
+  test_size: 0.2  #size of test data in training of the model
+  validation_size: 0.1  #size of the validation data
+  mode: train  #mode of the program. Can be train or test
+  save_dir: I:\PhD\Mitacs\SAINT\My_code\output  #address of the directory to save the train model
+  # model: classification
+  # model: regression
+  model: censored #type of running. Can be classification, regression, or censored
+  censored_column: event #for censored data, the column of defining censored samples
+  saved_model:  #for test only. Path of the saved model.
